@@ -5,6 +5,8 @@ description = "Markdown-first template for designing, building, and evaluating A
 requires-python = ">=3.11"
 dependencies = [
   "pydantic>=2.7",
+  "dspy-ai>=2.4",
+  "python-dotenv>=1.0",
 ]
 
 [project.optional-dependencies]

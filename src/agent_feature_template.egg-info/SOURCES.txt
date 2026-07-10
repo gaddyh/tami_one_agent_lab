@@ -1,0 +1,15 @@
+README.md
+pyproject.toml
+src/agent_feature_template/__init__.py
+src/agent_feature_template/agent.py
+src/agent_feature_template/render.py
+src/agent_feature_template/schemas.py
+src/agent_feature_template/signatures.py
+src/agent_feature_template.egg-info/PKG-INFO
+src/agent_feature_template.egg-info/SOURCES.txt
+src/agent_feature_template.egg-info/dependency_links.txt
+src/agent_feature_template.egg-info/requires.txt
+src/agent_feature_template.egg-info/top_level.txt
+tests/test_agent.py
+tests/test_metrics.py
+tests/test_render.py

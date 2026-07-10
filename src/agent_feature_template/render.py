@@ -1,26 +1,22 @@
 from __future__ import annotations
 
-from .schemas import AgentOutput, Priority
+from .schemas import ReminderOutput, ReminderStatus
 
 
-_PRIORITY_ORDER = {
-    Priority.URGENT: 0,
-    Priority.NORMAL: 1,
-    Priority.LOW: 2,
-    Priority.NONE: 3,
-}
+def render_output(output: ReminderOutput) -> str:
+    """Render a reminder agent output as a human-readable message."""
 
+    if output.rendered_message:
+        return output.rendered_message
 
-def render_outputs(outputs: list[AgentOutput]) -> str:
-    """Render agent outputs as a compact human-readable report."""
+    if output.status == ReminderStatus.CREATED and output.reminder:
+        when_str = output.reminder.when.strftime("%B %d at %I:%M %p").lstrip("0")
+        return f"Reminder created: {output.reminder.what} on {when_str}"
 
-    sorted_outputs = sorted(outputs, key=lambda item: _PRIORITY_ORDER[item.priority])
-    lines: list[str] = []
+    if output.status == ReminderStatus.NEEDS_CLARIFICATION and output.clarification_question:
+        return output.clarification_question
 
-    for index, item in enumerate(sorted_outputs, start=1):
-        lines.append(f"{index}. [{item.priority}] {item.summary}")
-        lines.append(f"   decision: {item.decision}")
-        if item.recommended_next_step:
-            lines.append(f"   next: {item.recommended_next_step}")
+    if output.status == ReminderStatus.IGNORED:
+        return "I didn't catch a reminder request. Could you rephrase?"
 
-    return "\n".join(lines)
+    return f"Status: {output.status}"

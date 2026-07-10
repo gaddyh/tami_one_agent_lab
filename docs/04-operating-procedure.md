@@ -11,10 +11,9 @@ For every new agent project:
 3. Turn each knowledge/decision need into a capability.
 4. Split capabilities into:
    - input/data,
-   - classification,
-   - situation understanding,
-   - decision,
-   - action/tool use,
+   - intent classification,
+   - extraction,
+   - decision/clarification,
    - output/rendering.
 5. Pick the smallest demo path.
 6. Turn each step into a feature.
@@ -102,9 +101,9 @@ A feature is done when:
 Prefer small commits:
 
 ```text
-docs: define input classification feature
-schema: add normalized input model
-eval: add irrelevant input examples
-agent: implement baseline classifier
-test: cover classification edge cases
+docs: define reminder agent goal and contract
+schema: add ReminderInput and ReminderOutput models
+eval: add missing-time and missing-date examples
+agent: implement intent classification and task extraction
+test: cover multi-turn clarification flow
 ```

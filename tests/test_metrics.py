@@ -1,9 +1,9 @@
-from eval.metrics import keyword_hit
+from __future__ import annotations
+
+from src.agent_feature_template.schemas import ReminderOutput, ReminderStatus
 
 
-def test_keyword_hit_all_keywords():
-    assert keyword_hit("Send a concise response", ["send", "response"])
-
-
-def test_keyword_hit_missing_keyword():
-    assert not keyword_hit("Send a concise response", ["deadline"])
+def test_reminder_status_values():
+    assert ReminderStatus.CREATED == "created"
+    assert ReminderStatus.NEEDS_CLARIFICATION == "needs_clarification"
+    assert ReminderStatus.IGNORED == "ignored"

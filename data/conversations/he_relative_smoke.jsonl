@@ -1,0 +1,1 @@
+{"id":"he_relative_smoke","language":"he","current_time":"2026-07-10T00:51:00+03:00","turns":[{"user":"תזכיר לי עוד דקה לעשן","expected":{"status":"created","missing_fields":[],"reminder_what":"לעשן","reminder_when_tolerance_seconds":90}}]}
